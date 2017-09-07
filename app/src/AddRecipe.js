@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
   ButtonToolbar,
-  Button,
-  Modal
+  Button
 } from 'react-bootstrap';
+
+import RecipeModal from './RecipeModal';
 
 export default class AddRecipe extends Component {
   constructor(props) {
@@ -11,10 +12,10 @@ export default class AddRecipe extends Component {
     this.state = {
       show: false
     }
-    this.toggleModal = this.toggleModal.bind(this);
+    this.handleToggleModal = this.handleToggleModal.bind(this);
   }
 
-  toggleModal() {
+  handleToggleModal() {
     this.setState({
       show: !this.state.show
     });
@@ -27,30 +28,17 @@ export default class AddRecipe extends Component {
           <ButtonToolbar>
             <Button
               bsStyle="primary"
-              onClick={this.toggleModal}>
+              onClick={this.handleToggleModal}>
               Add Recipe
             </Button>
           </ButtonToolbar>
         </div>
         <div className="modal">
-          <Modal
+          <RecipeModal
             show={this.state.show}
-            container={this}
-            aria-labelledby="contained-modal-title">
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title">
-                Contained Modal
-              </Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-              What do you expect from this World?
-            </Modal.Body>
-
-            <Modal.Footer>
-              <Button onClick={this.toggleModal}>Close</Button>
-            </Modal.Footer>
-          </Modal>
+            title={"Add Recipe"}
+            OnCloseModal={this.handleToggleModal}
+          />
         </div>
       </div>
     );
