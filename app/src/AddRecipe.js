@@ -13,12 +13,18 @@ export default class AddRecipe extends Component {
       show: false
     }
     this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.handleNewRecipe = this.handleNewRecipe.bind(this);
   }
 
   handleToggleModal() {
     this.setState({
       show: !this.state.show
     });
+  }
+
+  handleNewRecipe(value) {
+    this.handleToggleModal();
+    this.props.onNewRecipe(value);
   }
 
   render() {
@@ -37,7 +43,8 @@ export default class AddRecipe extends Component {
           <RecipeModal
             show={this.state.show}
             title={"Add Recipe"}
-            OnCloseModal={this.handleToggleModal}
+            onCloseModal={this.handleToggleModal}
+            onSaveRecipe={this.handleNewRecipe}
           />
         </div>
       </div>
