@@ -8,6 +8,22 @@ import {
   Button
 } from 'react-bootstrap';
 
+import AddRecipe from './AddRecipe';
+
+function CollapseablePanelGroup(props) {
+  const recipe = props.recipe;
+  const recipeElements = (
+    <div>
+      <Panel
+        header={recipe.name}
+      >
+          {recipe.ingredients}
+      </Panel>
+    </div>
+  );
+  return recipeElements;
+}
+
 export default class RecipeIndex extends Component {
   constructor(props) {
     super(props);
@@ -17,18 +33,15 @@ export default class RecipeIndex extends Component {
       open: false
     };
     this.handleNewRecipe = this.handleNewRecipe.bind(this);
-    this.handleCollapse = this.handleCollapse.bind(this);
+    // this.handleCollapse = this.handleCollapse.bind(this);
   }
 
   handleNewRecipe(value) {
-    let recipe = value;
+    let res = <CollapseablePanelGroup recipe={value} />
     this.setState({
-      recipes: [...this.state.recipes, recipe]
-    })
-  }
-
-  handleCollapse() {
-
+      recipes: [...this.state.recipes, res]
+    });
+    console.log(this.state.recipes);
   }
 
   render() {
