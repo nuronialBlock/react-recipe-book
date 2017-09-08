@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Grid, Row, Col } from 'react-bootstrap';
 
-import AddRecipe from './AddRecipe';
+import RecipeIndex from './RecipeIndex';
 
 class App extends Component {
   render() {
@@ -14,13 +14,7 @@ class App extends Component {
             </Navbar.Brand>
           </Navbar.Header>
         </Navbar>
-        <Grid>
-          <Row>
-            <Col lg={10}>
-              <AddRecipe />
-            </Col>
-          </Row>
-        </Grid>
+        <RecipeIndex />
       </div>
     );
   }
