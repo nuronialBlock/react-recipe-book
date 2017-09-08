@@ -4,18 +4,42 @@ import {
   FormGroup,
   ControlLabel,
   FormControl,
-  Button
+  Button,
+  ButtonToolbar
 } from 'react-bootstrap';
 
 export default class RecipeModal extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      name: '',
+      ingredients: ''
+    }
     this.closeModal = this.closeModal.bind(this);
+    this.saveRecipe = this.saveRecipe.bind(this);
+    this.updateRecipeName = this.updateRecipeName.bind(this);
+    this.updateIngredients = this.updateIngredients.bind(this);
   }
 
   closeModal(e) {
-    this.props.OnCloseModal(e);
+    this.props.onCloseModal(e);
+  }
+
+  saveRecipe() {
+    console.log(this.state);
+    this.props.onSaveRecipe(this.state);
+  }
+
+  updateRecipeName(e) {
+    this.setState({
+      name: e.target.value
+    })
+  }
+  updateIngredients(e) {
+    this.setState({
+      ingredients: e.target.value
+    })
   }
 
   render() {
@@ -24,7 +48,7 @@ export default class RecipeModal extends Component {
         show={this.props.show}
         container={this}
         aria-labelledby="contained-modal-title">
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title">
             {this.props.title}
           </Modal.Title>
@@ -38,6 +62,7 @@ export default class RecipeModal extends Component {
                 type="text"
                 placeholder="Recipe Name"
                 value={this.props.recipeName}
+                onChange={this.updateRecipeName}
               />
             </FormGroup>
             <FormGroup controlId="formControlsTextarea">
@@ -46,13 +71,22 @@ export default class RecipeModal extends Component {
                 componentClass="textarea"
                 placeholder="Enter ingredients, sperated by commas"
                 value={this.props.ingredients}
+                onChange={this.updateIngredients}
               />
             </FormGroup>
           </form>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button onClick={this.closeModal}>Close</Button>
+          <ButtonToolbar>
+            <Button onClick={this.closeModal}>Close</Button>
+            <Button
+              onClick={this.saveRecipe}
+              bsStyle="primary"
+            >
+              Save
+            </Button>
+          </ButtonToolbar>
         </Modal.Footer>
       </Modal>
     );
