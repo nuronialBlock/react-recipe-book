@@ -5,6 +5,7 @@ import {
   Col,
   Well,
   Panel,
+  PanelGroup,
   Button
 } from 'react-bootstrap';
 
@@ -16,6 +17,7 @@ function CollapseablePanelGroup(props) {
     <div>
       <Panel
         header={recipe.name}
+        collapsible
       >
           {recipe.ingredients}
       </Panel>
@@ -50,7 +52,9 @@ export default class RecipeIndex extends Component {
         <Row>
           <Col lg={10}>
             <Well>
-              {this.state.recipes}
+              <PanelGroup>
+                {this.state.recipes}
+              </PanelGroup>
             </Well>
             <AddRecipe
               onNewRecipe={this.handleNewRecipe}
