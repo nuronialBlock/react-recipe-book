@@ -6,6 +6,9 @@ import {
   Well,
   Panel,
   PanelGroup,
+  PageHeader,
+  ListGroup,
+  ListGroupItem,
   Button
 } from 'react-bootstrap';
 
@@ -13,13 +16,21 @@ import AddRecipe from './AddRecipe';
 
 function CollapseablePanelGroup(props) {
   const recipe = props.recipe;
+  const ingredients = recipe.ingredients.split(",");
+  const listIngredients = ingredients.map( ingredient => {
+    return <ListGroupItem>{ingredient}</ListGroupItem>;
+  });
   const recipeElements = (
     <div>
       <Panel
         header={recipe.name}
         collapsible
       >
-          {recipe.ingredients}
+        <PageHeader bsClass="text-center">
+          <h4><b>Ingredients</b></h4>
+          <hr/>
+        </PageHeader>
+          {listIngredients}
       </Panel>
     </div>
   );
