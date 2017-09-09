@@ -35,7 +35,6 @@ export default class RecipeIndex extends Component {
       open: false
     };
     this.handleNewRecipe = this.handleNewRecipe.bind(this);
-    // this.handleCollapse = this.handleCollapse.bind(this);
   }
 
   handleNewRecipe(value) {
@@ -43,7 +42,6 @@ export default class RecipeIndex extends Component {
     this.setState({
       recipes: [...this.state.recipes, res]
     });
-    console.log(this.state.recipes);
   }
 
   render() {
