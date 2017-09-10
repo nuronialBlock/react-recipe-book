@@ -14,7 +14,6 @@ function CollapseablePanel(props) {
     return <ListGroupItem>{ingredient}</ListGroupItem>;
   });
   const recipeElements = (
-    <div>
       <Panel
         header={recipe.name}
         eventKey={props.eventKey}
@@ -23,9 +22,8 @@ function CollapseablePanel(props) {
           <h4><b>Ingredients</b></h4>
           <hr/>
         </PageHeader>
-          {listIngredients}
+        {listIngredients}
       </Panel>
-    </div>
   );
   return recipeElements;
 }
@@ -33,15 +31,12 @@ function CollapseablePanel(props) {
 export default class ControlledPanelGroup extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeKey: "1"
-    }
+    this.state = { activeKey: "1" }
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleSelect(activekey) {
-    this.setState({activekey});
+  handleSelect(activeKey) {
+    this.setState({ activeKey });
   }
 
   render() {
@@ -56,7 +51,6 @@ export default class ControlledPanelGroup extends Component {
       );
     })
     return (
-      <div>
         <PanelGroup
           activeKey={this.state.activeKey}
           onSelect={this.handleSelect}
@@ -64,8 +58,6 @@ export default class ControlledPanelGroup extends Component {
         >
           {panels}
         </PanelGroup>
-      </div>
     )
   }
-
 }

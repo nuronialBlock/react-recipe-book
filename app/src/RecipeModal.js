@@ -27,7 +27,6 @@ export default class RecipeModal extends Component {
   }
 
   saveRecipe() {
-    console.log(this.state);
     this.props.onSaveRecipe(this.state);
   }
 
