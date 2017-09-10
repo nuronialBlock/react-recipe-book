@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Grid, Row, Col } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 
 import RecipeIndex from './RecipeIndex';
 

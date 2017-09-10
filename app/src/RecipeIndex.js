@@ -3,15 +3,7 @@ import {
   Grid,
   Row,
   Col,
-  Well,
-  Panel,
-  PanelGroup,
-  PageHeader,
-  ListGroup,
-  ListGroupItem,
-  Accordion,
-  ButtonToolbar,
-  Button
+  Well
 } from 'react-bootstrap';
 
 import CollapseablePanel from './CollapseablePanel';

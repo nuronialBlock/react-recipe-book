@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Grid,
-  Row,
-  Col,
-  Well,
   Panel,
   PanelGroup,
   PageHeader,
-  ListGroup,
-  ListGroupItem,
-  Accordion,
-  ButtonToolbar,
-  Button
+  ListGroupItem
 } from 'react-bootstrap';
 
 import EditRecipe from './EditRecipe';
