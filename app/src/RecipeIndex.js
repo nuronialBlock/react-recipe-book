@@ -17,12 +17,19 @@ export default class RecipeIndex extends Component {
       recipes: [],
     };
     this.handleNewRecipe = this.handleNewRecipe.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleNewRecipe(value) {
     this.setState({
       recipes: [...this.state.recipes, value]
     });
+  }
+
+  handleDelete(value) {
+    const recipes = this.state.recipes.filter( recipe =>
+      recipe.name !== value.name);
+    this.setState({ recipes });
   }
 
   render() {
@@ -34,6 +41,7 @@ export default class RecipeIndex extends Component {
               <CollapseablePanel
                 recipes={this.state.recipes}
                 onUpdateRecipe={this.handleNewRecipe}
+                onDelete={this.handleDelete}
               />
             </Well>
             <AddRecipe

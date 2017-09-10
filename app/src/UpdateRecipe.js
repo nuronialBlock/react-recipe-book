@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  ButtonToolbar,
   Button
 } from 'react-bootstrap';
 
@@ -14,6 +15,7 @@ export default class EditRecipe extends Component {
     }
     this.handleSaveRecipe = this.handleSaveRecipe.bind(this);
     this.handleToggleModal = this.handleToggleModal.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleToggleModal(e) {
@@ -24,12 +26,28 @@ export default class EditRecipe extends Component {
     this.props.onUpdateRecipe(e);
   }
 
+  handleDelete(e){
+    const val = {
+      name: this.props.name,
+      ingredients: this.props.ingredients
+    };
+    this.props.onDeleteRecipe(val);
+  }
+
   render() {
     return (
       <div>
-        <Button onClick={this.handleToggleModal}>
-          Edit
-        </Button>
+        <ButtonToolbar>
+          <Button
+            bsStyle="danger"
+            onClick={this.handleDelete}
+          >
+            Delete
+          </Button>
+          <Button onClick={this.handleToggleModal}>
+            Edit
+          </Button>
+        </ButtonToolbar>
         <RecipeModal
           name={this.props.name}
           ingredients={this.props.ingredients}

@@ -6,16 +6,21 @@ import {
   ListGroupItem
 } from 'react-bootstrap';
 
-import EditRecipe from './EditRecipe';
+import UpdateRecipe from './UpdateRecipe';
 
 export default class CollapseablePanel extends Component {
   constructor(props) {
     super(props);
     this.handleUpdateRecipe = this.handleUpdateRecipe.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleUpdateRecipe(e) {
     this.props.onUpdateRecipe(e);
+  }
+
+  handleDelete(e){
+    this.props.onDelete(e);
   }
 
   render() {
@@ -37,10 +42,11 @@ export default class CollapseablePanel extends Component {
           </PageHeader>
           {listIngredients}
           <hr/>
-          <EditRecipe
+          <UpdateRecipe
             name={recipe.name}
             ingredients={ingredients}
             onUpdateRecipe={this.handleUpdateRecipe}
+            onDeleteRecipe={this.handleDelete}
           />
         </Panel>
       );
