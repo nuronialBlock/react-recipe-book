@@ -10,6 +10,7 @@ import {
   ListGroup,
   ListGroupItem,
   Accordion,
+  ButtonToolbar,
   Button
 } from 'react-bootstrap';
 
@@ -33,6 +34,11 @@ function CollapseablePanel(props) {
           <hr/>
         </PageHeader>
         {listIngredients}
+        <hr/>
+        <ButtonToolbar>
+          <Button bsStyle="danger">Delete</Button>
+          <Button onClick={}>Edit</Button>
+        </ButtonToolbar>
       </Panel>
     );
   });
