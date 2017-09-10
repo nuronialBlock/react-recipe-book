@@ -9,11 +9,44 @@ import {
   PageHeader,
   ListGroup,
   ListGroupItem,
+  Accordion,
   Button
 } from 'react-bootstrap';
 
 import AddRecipe from './AddRecipe';
-import ControlledPanelGroup from './ControlledPanelGroup';
+
+function CollapseablePanel(props) {
+  let key = 0;
+  const recipes = props.recipes.map(recipe => {
+    const ingredients = recipe.ingredients.split(",");
+    const listIngredients = ingredients.map( ingredient => {
+      return <ListGroupItem>{ingredient}</ListGroupItem>;
+    });
+    key = key + 1;
+    return (
+      <Panel
+        header={recipe.name}
+        eventKey={key.toString()}
+      >
+        <PageHeader bsClass="text-center">
+          <h4><b>Ingredients</b></h4>
+          <hr/>
+        </PageHeader>
+        {listIngredients}
+      </Panel>
+    );
+  });
+  return (
+    <div>
+      <PanelGroup
+        defaultActiveKey="1"
+        accordion
+      >
+        {recipes}
+      </PanelGroup>
+    </div>
+  );
+}
 
 export default class RecipeIndex extends Component {
   constructor(props) {
@@ -37,7 +70,7 @@ export default class RecipeIndex extends Component {
         <Row>
           <Col lg={10}>
             <Well>
-              <ControlledPanelGroup recipes={this.state.recipes} />
+              <CollapseablePanel recipes={this.state.recipes} />
             </Well>
             <AddRecipe
               onNewRecipe={this.handleNewRecipe}
