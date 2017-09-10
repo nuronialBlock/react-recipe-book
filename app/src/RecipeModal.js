@@ -13,8 +13,8 @@ export default class RecipeModal extends Component {
     super(props);
 
     this.state = {
-      name: '',
-      ingredients: ''
+      name: this.props.name,
+      ingredients: this.props.ingredients
     }
     this.closeModal = this.closeModal.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
@@ -60,7 +60,7 @@ export default class RecipeModal extends Component {
               <FormControl
                 type="text"
                 placeholder="Recipe Name"
-                value={this.props.recipeName}
+                value={this.state.name}
                 onChange={this.updateRecipeName}
               />
             </FormGroup>
@@ -69,7 +69,7 @@ export default class RecipeModal extends Component {
               <FormControl
                 componentClass="textarea"
                 placeholder="Enter ingredients, sperated by commas"
-                value={this.props.ingredients}
+                value={this.state.ingredients}
                 onChange={this.updateIngredients}
               />
             </FormGroup>
