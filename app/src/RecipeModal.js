@@ -27,7 +27,12 @@ export default class RecipeModal extends Component {
   }
 
   saveRecipe() {
-    this.props.onSaveRecipe(this.state);
+    const recipe = this.state;
+    this.setState({
+      name: '',
+      ingredients: ''
+    });
+    this.props.onSaveRecipe(recipe);
   }
 
   updateRecipeName(e) {

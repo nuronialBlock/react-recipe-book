@@ -18,6 +18,7 @@ export default class RecipeIndex extends Component {
     };
     this.handleNewRecipe = this.handleNewRecipe.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdateRecipe = this.handleUpdateRecipe.bind(this);
   }
 
   handleNewRecipe(value) {
@@ -32,6 +33,12 @@ export default class RecipeIndex extends Component {
     this.setState({ recipes });
   }
 
+  handleUpdateRecipe(value){
+    this.handleDelete(value);
+    console.log(this.state.recipes);
+    this.handleNewRecipe(value);
+  }
+
   render() {
     return (
       <Grid>
@@ -40,7 +47,7 @@ export default class RecipeIndex extends Component {
             <Well>
               <CollapseablePanel
                 recipes={this.state.recipes}
-                onUpdateRecipe={this.handleNewRecipe}
+                onUpdateRecipe={this.handleUpdateRecipe}
                 onDelete={this.handleDelete}
               />
             </Well>

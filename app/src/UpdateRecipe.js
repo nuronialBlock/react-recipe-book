@@ -18,15 +18,16 @@ export default class EditRecipe extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleToggleModal(e) {
+  handleToggleModal() {
     this.setState({ show: !this.state.show })
   }
 
   handleSaveRecipe(e) {
+    this.handleToggleModal();
     this.props.onUpdateRecipe(e);
   }
 
-  handleDelete(e){
+  handleDelete(){
     const val = {
       name: this.props.name,
       ingredients: this.props.ingredients

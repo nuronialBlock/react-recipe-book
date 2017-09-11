@@ -41,6 +41,8 @@ export default class AddRecipe extends Component {
         </div>
         <div className="modal">
           <RecipeModal
+            name={''}
+            ingredients={''}
             show={this.state.show}
             title={"Add Recipe"}
             onCloseModal={this.handleToggleModal}
