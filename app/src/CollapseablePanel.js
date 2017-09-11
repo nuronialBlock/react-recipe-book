@@ -24,7 +24,7 @@ export default class CollapseablePanel extends Component {
   }
 
   render() {
-    let key = 0;
+    let key = -1;
     const recipes = this.props.recipes.map(recipe => {
       const ingredients = recipe.ingredients.split(",");
       const listIngredients = ingredients.map( ingredient => {
@@ -44,7 +44,8 @@ export default class CollapseablePanel extends Component {
           <hr/>
           <UpdateRecipe
             name={recipe.name}
-            ingredients={ingredients}
+            ingredients={recipe.ingredients}
+            idx={key}
             onUpdateRecipe={this.handleUpdateRecipe}
             onDeleteRecipe={this.handleDelete}
           />
@@ -54,7 +55,7 @@ export default class CollapseablePanel extends Component {
     return (
       <div>
         <PanelGroup
-          defaultActiveKey="1"
+          defaultActiveKey="0"
           accordion
         >
           {recipes}

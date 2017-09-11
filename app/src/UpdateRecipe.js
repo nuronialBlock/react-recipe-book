@@ -6,7 +6,7 @@ import {
 
 import RecipeModal from './RecipeModal';
 
-export default class EditRecipe extends Component {
+export default class UpdateRecipe extends Component {
   constructor(props) {
     super(props);
 
@@ -52,6 +52,7 @@ export default class EditRecipe extends Component {
         <RecipeModal
           name={this.props.name}
           ingredients={this.props.ingredients}
+          idx={this.props.idx}
           show={this.state.show}
           title={"Edit Recipe"}
           onCloseModal={this.handleToggleModal}

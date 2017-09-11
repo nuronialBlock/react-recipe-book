@@ -15,7 +15,8 @@ export default class RecipeModal extends Component {
     this.state = {
       name: this.props.name,
       ingredients: this.props.ingredients,
-      addRecipe: this.props.addRecipe || false
+      addRecipe: this.props.addRecipe || false,
+      idx: this.props.idx || 0
     }
     this.closeModal = this.closeModal.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
@@ -24,16 +25,22 @@ export default class RecipeModal extends Component {
   }
 
   closeModal(e) {
+    this.setState({
+      name: this.props.name,
+      ingredients: this.props.ingredients,
+      addRecipe: this.props.addRecipe || false,
+      idx: this.props.idx || 0
+    })
     this.props.onCloseModal(e);
   }
 
   saveRecipe() {
-    const recipe = this.state;
     this.state.addRecipe && this.setState({
       name: '',
       ingredients: ''
     });
-    this.props.onSaveRecipe(recipe);
+    this.setState({ idx: this.props.idx });
+    this.props.onSaveRecipe(this.state);
   }
 
   updateRecipeName(e) {

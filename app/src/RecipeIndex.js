@@ -34,13 +34,19 @@ export default class RecipeIndex extends Component {
   }
 
   handleUpdateRecipe(value){
+    console.log(value);
+    let key = -1;
     const recipes = this.state.recipes.map( recipe => {
-      if(recipe.name === value.name) {
-        return value;
+      key = key + 1;
+      if(value.idx === key) {
+        const res = {
+          name: value.name,
+          ingredients: value.ingredients
+        };
+        return res;
       }
       return recipe;
     });
-
     this.setState({
       recipes: [...recipes]
     });
