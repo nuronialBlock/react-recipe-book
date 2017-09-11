@@ -28,10 +28,10 @@ export default class RecipeModal extends Component {
 
   saveRecipe() {
     const recipe = this.state;
-    this.setState({
-      name: '',
-      ingredients: ''
-    });
+    // this.setState({
+    //   name: '',
+    //   ingredients: ''
+    // });
     this.props.onSaveRecipe(recipe);
   }
 

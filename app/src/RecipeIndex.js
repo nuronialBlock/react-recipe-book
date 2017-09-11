@@ -34,10 +34,15 @@ export default class RecipeIndex extends Component {
   }
 
   handleUpdateRecipe(value){
-    const recipes = this.state.recipes.filter( recipe =>
-      recipe.name !== value.name) || [];
+    const recipes = this.state.recipes.map( recipe => {
+      if(recipe.name === value.name) {
+        return value;
+      }
+      return recipe;
+    });
+
     this.setState({
-      recipes: [...recipes, value]
+      recipes: [...recipes]
     });
   }
 
