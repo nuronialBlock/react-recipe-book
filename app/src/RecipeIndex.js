@@ -34,9 +34,11 @@ export default class RecipeIndex extends Component {
   }
 
   handleUpdateRecipe(value){
-    this.handleDelete(value);
-    console.log(this.state.recipes);
-    this.handleNewRecipe(value);
+    const recipes = this.state.recipes.filter( recipe =>
+      recipe.name !== value.name) || [];
+    this.setState({
+      recipes: [...recipes, value]
+    });
   }
 
   render() {
