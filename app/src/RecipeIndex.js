@@ -59,6 +59,7 @@ export default class RecipeIndex extends Component {
               />
             </Well>
             <AddRecipe
+              dddRecipe={true}
               onNewRecipe={this.handleNewRecipe}
             />
           </Col>

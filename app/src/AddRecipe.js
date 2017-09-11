@@ -41,6 +41,7 @@ export default class AddRecipe extends Component {
         </div>
         <div className="modal">
           <RecipeModal
+            addRecipe={true}
             name={''}
             ingredients={''}
             show={this.state.show}
